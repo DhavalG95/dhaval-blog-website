@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="alert alert-success">
+    <form class="d-flex" role="search" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search"
+            required />
+        <button class="btn btn-outline-success" type="submit"><a class="nav-link">Search</a></button>
+    </form>
+</div>
+<div style="background-color: rgb(102, 48, 48); color: beige;">
+    <div class=" container-fluid">
+        {% if user.is_authenticated %}
+        {% for i in data %}
+        <div class="container">
+
+            <h1 style="color: rgb(20, 20, 13); background-color:rgb(140, 163, 158) ;">{{i.Title}}</h1>
+            <h4 style="color: rgb(185, 185, 164); background-color:rgb(60, 170, 146) ;">{{i.Description}}</h4>
+            <h6 style="color: rgb(20, 20, 13); background-color:rgb(140, 163, 158) ;">Author:{{i.Author}}</h6>
+            <!-- <button><a href="/{{i.id}}"><i class="fa-solid fa-pen-to-square"></i>Edit</a></button>
+            <button><a href="delete/{{i.id}}"><i class="fa-solid fa-trash"></i>Delete</a></button> -->
+
+        
+        <form>
+            <button class="btn btn-outline-success" type="submit"><a href="{% url 'blogcomment' %}" class="nav-link">Add Comment</a></button>
+        </form>
+        </div>
+        <br />
+        <br />
+        {%endfor%}
+
+        <!-- {% for p in data2 %}
+        <div class="container">
+
+            <h1 style="color: rgb(20, 20, 13); background-color:rgb(140, 163, 158) ;">{{p.Name}}</h1>
+            <h4 style="color: rgb(185, 185, 164); background-color:rgb(60, 170, 146) ;">{{p.Content}}</h4>
+            <button><a href="/{{i.id}}"><i class="fa-solid fa-pen-to-square"></i>Edit</a></button>
+            <button><a href="delete/{{i.id}}"><i class="fa-solid fa-trash"></i>Delete</a></button>
+
+        
+        <form>
+            <button class="btn btn-outline-success" type="submit"><a href="{% url 'blogcomment' %}" class="nav-link">Add Comment</a></button>
+        </form>
+        </div>
+        <br />
+        <br />
+        {%endfor%} -->
+        {% else %}
+        <div>
+            <h3>“Sorry, You Are Not Allowed to Access This Page” !</h3>
+            <br/>
+            <h5>Please <button class="btn btn-outline-success "><a class="nav-link" href="{% url 'register' %}">Signup</a></button> Or <button class="btn btn-outline-success "><a class="nav-link" href="{% url 'login' %}">Login</a></button> To Access This Page</h5>
+            
+            
+        </div>
+        {% endif %}
+
+        
+    </div>
+</div>
+{% endblock %}

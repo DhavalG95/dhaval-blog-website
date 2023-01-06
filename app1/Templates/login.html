@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="background-color: rgb(102, 48, 48); color: beige;">
+    <div class=" container-fluid">
+        <h3>login</h3>
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+            <p>
+                {{ field.label }}: <br />
+                {{ field }}
+            </p>
+            {% endfor %}
+            <button class="btn btn-outline-success d-flex" type="submit">Login</button>
+            <br/>
+            <h3> or </h3>
+            <br/>
+            <button class="btn btn-outline-success d-flex" type="submit"><a href="/password_reset" class="nav-link">Forgot Password?</a></button>
+
+        </form>
+        
+        <h3>Don't have an account? <button type="submit" class="btn btn-outline-success d-flex"><a href="{% url 'register' %}" class="nav-link">Signup here</a></button></h3>
+
+
+    </div>
+</div>
+{% endblock %}

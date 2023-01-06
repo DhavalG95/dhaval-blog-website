@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="alert alert-success">
+    <form method="POST">
+        {%csrf_token%}
+        {{comment_data.as_p}}
+        <button type="submit" name="comment">Comment</button>
+    </form>
+
+</div>
+
+{% endblock %}

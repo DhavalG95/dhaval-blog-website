@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+
+<div class="container-fluid mt-5 " style="background-color: rgb(102, 48, 48); color: beige;">
+    <div class="row">
+        {% include 'messages.html' %}
+        <div class="col-xl-6 col-lg-12">
+            <div class="form_sub ps-5 bcg">
+                <h1 class="mb-4">Contact Us</h1>
+                <form enctype="multipart/form-data" method="POST">
+                    {%csrf_token%}
+                    <div class="name_field">
+                        <label>Name :</label>
+                        <input type="text" placeholder="enter your name" name="name" required>
+                    </div>
+                    <br />
+                    <div class="email_field">
+                        <label>Number :</label>
+                        <input type="number" placeholder="enter mobile number" name="number" required>
+
+                    </div>
+                    <br />
+                    <div class="salary_field">
+                        <label>Email :</label>
+                        <input type="email" placeholder="name@example.com" name="email" required>
+                    </div>
+                    <br />
+                    <div class="image_field">
+                        <label> Query :</label>
+                        <input type="text" placeholder="enter query here" name="query" required>
+                    </div>
+                    <br />
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
