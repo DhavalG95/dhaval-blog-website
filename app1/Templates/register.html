@@ -5,6 +5,7 @@
         <form method="POST">
             {% csrf_token %}
             {{forum.as_p}}
+            <input type="checkbox" id="box" onclick="reveal()"> Show Password
             <button type="submit" class="btn btn-outline-success d-flex">Register</button>
         </form>
 
