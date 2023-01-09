@@ -38,8 +38,27 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app1'
+    'app1',
+    "allauth",
+    "allauth.account", 
+    "allauth.socialaccount", 
+    "allauth.socialaccount.providers.google",
 ]
+
+#steps to create google signin authentication=https://www.tutorialspoint.com/google-authentication-in-django and https://www.codesnail.com/google-authentication-in-django/
+
+
+SOCIALACCOUNT_PROVIDERS = {
+   'google': {
+      'SCOPE': [
+         'profile',
+         'email',
+      ],
+      'AUTH_PARAMS': {
+         'access_type': 'online',
+      }
+   }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -132,5 +151,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "dhavalgothir@gmail.com"
 EMAIL_HOST_PASSWORD = "waezqdohvmulxege"
 
-
+AUTHENTICATION_BACKENDS = (
+   "django.contrib.auth.backends.ModelBackend",
+   "allauth.account.auth_backends.AuthenticationBackend",
+)
 

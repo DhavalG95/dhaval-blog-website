@@ -12,16 +12,21 @@
                 {{ field }}
             </p>
             {% endfor %}
-            <input type="checkbox" id="box" onclick ="reveal()">Show Password
+            <input type="checkbox" id="box" onclick="reveal()">Show Password
             <button class="btn btn-outline-success d-flex" type="submit">Login</button>
-            <br/>
+            <br />
+            {% load socialaccount %}
+            <h1>Google Login</h1>
+            <a href="{% provider_login_url 'google'%}?next=/">Login with Google</a><br/>
             <h3> or </h3>
-            <br/>
-            <button class="btn btn-outline-success d-flex" type="submit"><a href="/password_reset" class="nav-link">Forgot Password?</a></button>
+            <br />
+            <button class="btn btn-outline-success d-flex" type="submit"><a href="/password_reset"
+                    class="nav-link">Forgot Password?</a></button>
 
         </form>
-        
-        <h3>Don't have an account? <button type="submit" class="btn btn-outline-success d-flex"><a href="{% url 'register' %}" class="nav-link">Signup here</a></button></h3>
+
+        <h3>Don't have an account? <button type="submit" class="btn btn-outline-success d-flex"><a
+                    href="{% url 'register' %}" class="nav-link">Signup here</a></button></h3>
 
 
     </div>
